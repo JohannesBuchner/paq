@@ -1,0 +1,2 @@
+nasm -f elf ../paq8asm.asm -o paq8asm.o 
+g++ ../paq8g.cpp -O2 -Os -s -march=pentiumpro -fomit-frame-pointer -o paq8g paq8asm.o
