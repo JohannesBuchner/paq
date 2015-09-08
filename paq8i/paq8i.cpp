@@ -1127,7 +1127,7 @@ public:
   }
 
   // predict next bit
-  int Mixer::p() {
+  int p() {
     while (nx&7) tx[nx++]=0;  // pad
     if (mp) {  // combine outputs
       mp->update();

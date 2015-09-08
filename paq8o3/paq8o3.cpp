@@ -2476,7 +2476,7 @@ int jpegModel(Mixer& m) {
         for (int i=1; i<mcusize; ++i) if (color[(j+i)%mcusize]==color[j]) ls[j]=i;
         ls[j]=mcusize-ls[j]<<6;
       }
-      for ( j=0; j<64; ++j) zpos[zzu[j]+8*zzv[j]]=j;
+      for (int j=0; j<64; ++j) zpos[zzu[j]+8*zzv[j]]=j;
       width=buf[sof+7]*256+buf[sof+8];  // in pixels
       int height=buf[sof+5]*256+buf[sof+6];
       printf("JPEG %dx%d ", width, height);
@@ -2582,7 +2582,7 @@ int jpegModel(Mixer& m) {
             const int zz=mcupos&63, cpos_dc=cpos-zz;
             if (zz==0) {
               for (int i=0; i<8; ++i) sumu[i]=sumv[i]=0;
-              for ( i=0; i<64; ++i) {
+              for (int i=0; i<64; ++i) {
                 sumu[zzu[i]]+=(zzv[i]?256:181)*(zzv[i]&1?-1:+1)*(qtab[q+i]+1)*cbuf2[cpos_dc+i-mcusize*width];
                 sumv[zzv[i]]+=(zzu[i]?256:181)*(zzu[i]&1?-1:+1)*(qtab[q+i]+1)*cbuf2[cpos_dc+i-ls[acomp]];
               }
@@ -2604,7 +2604,7 @@ int jpegModel(Mixer& m) {
                   break;
                 }
               }
-            for ( i=0; i<4; ++i) {
+            for (int i=0; i<4; ++i) {
               const int a=(i&1?zzv[zz]:zzu[zz]), b=(i&2?2:1);
               if (a<b) x=255;
               else {
